@@ -1,4 +1,10 @@
+'use strict';
+
 window.onload = () => {
+
+    for (let ind = 0; ind < document.querySelector('#num-cards').value; ind++) {
+        document.querySelector('.board').appendChild(createCard());
+    }
     document.querySelector('.restart').addEventListener('click', (event) => {
         event.preventDefault();
         newGame(document.querySelector('#num-cards').value);
@@ -55,7 +61,7 @@ const createCard = () => {
     card.appendChild(flipper);
     card.addEventListener('click', (event) => {
         findAncestor(event.target, "flip-container").classList.toggle('flip');
-        cardLogic(event.target);
+        //cardLogic(event.target);
     })
 
     return card;
@@ -63,25 +69,21 @@ const createCard = () => {
 }
 
 const randCards = (cards)=>{
+    this.colors = colors.sort(function(a, b){return 0.5 - Math.random()});;
     for (let index = 0; index < cards.length; index+=2) {
-        cards[index].querySelector('.back').style.backgroundColor = `var(--${colors[Math.floor(index/2)]})`;
-        cards[index+1].querySelector('.back').style.backgroundColor = `var(--${colors[Math.floor(index/2)]})`;
+        cards[index].querySelector('.back').style.backgroundColor = `var(--${this.colors[Math.floor(index/2)]})`;
+        cards[index+1].querySelector('.back').style.backgroundColor = `var(--${this.colors[Math.floor(index/2)]})`;
     }
 }
 
 const newGame = (cards) => {
-    document.querySelectorAll(".flip-container").forEach((elmt) => {
-        elmt.remove();
-    });
-    for (let ind = 0; ind < cards; ind++) {
-        document.querySelector('.board').appendChild(createCard());
-    }
     this.cards = document.querySelectorAll('.flip-container');
     randCards(this.cards);
-    setTimeout(() => {
-        shuffle(this.cards);
-        setTimeout(() => {
-            positionCards(this.cards);
-        }, 2000);
-    }, 1000);
+    // setTimeout(() => {
+    //     shuffle(this.cards);
+    //     setTimeout(() => {
+    //         positionCards(this.cards);
+    //     }, 2000);
+    // }, 1000);
+    positionCards(this.cards);
 }
