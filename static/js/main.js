@@ -13,10 +13,28 @@ window.onload = () => {
 
 const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'];
 
+let lastFlipped;
+
 const cardLogic = (card) => {
-    let flippedCards = document.querySelectorAll('.flip');
-    flippedCards.forEach((card) => {
-        setTimeout(() => { card.classList.remove('flip') }, 2000);
+    if(!lastFlipped){
+        lastFlipped = card;
+    }else{
+        //alert(card.querySelector('.back').style.backgroundColor);
+        if(card.querySelector('.back').style.backgroundColor == lastFlipped.querySelector('.back').style.backgroundColor){
+            card.remove();
+            lastFlipped.remove();
+        }else{
+            lastFlipped.classList.remove('flip');
+            card.classList.remove('flip');
+        }
+        lastFlipped = false;
+    }
+
+}
+
+const unflipCards = (cards) => {
+    cards.forEach(card => {
+        card.classList.remove('flip');
     });
 }
 
@@ -61,7 +79,7 @@ const createCard = () => {
     card.appendChild(flipper);
     card.addEventListener('click', (event) => {
         findAncestor(event.target, "flip-container").classList.toggle('flip');
-        //cardLogic(event.target);
+        cardLogic(findAncestor(event.target, 'flip-container'));
     })
 
     return card;
@@ -78,7 +96,10 @@ const randCards = (cards)=>{
 
 const newGame = (cards) => {
     this.cards = document.querySelectorAll('.flip-container');
-    randCards(this.cards);
+    unflipCards(this.cards);
+    setTimeout(() => {
+        randCards(this.cards);
+    }, 500);
     // setTimeout(() => {
     //     shuffle(this.cards);
     //     setTimeout(() => {
