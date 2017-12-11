@@ -1,29 +1,52 @@
 'use strict';
 window.onload = () => {
+    const board = document.querySelector('.board');
     const diffs = document.querySelector('.diff-btns');
-    
     const restart = document.querySelector('.restart');
+    const playbtn = document.querySelector('.play-btn');
+    const winmenu = document.querySelector('.win');
+    const winrestart = document.querySelector('.play-again');
+    const tomenu = document.querySelector('.to-menu');
+
     restart.addEventListener('click', e=>{
         newGame();
     });
 
+    board.setAttribute('style', 'display:none');
     restart.setAttribute('style', 'display:none');
+    winmenu.setAttribute('style', 'display:none');
 
     diffs.querySelectorAll('li').forEach(e => {
         e.addEventListener('click', event => {
             newGame(parseInt(e.getAttribute('data-diff')));
             document.querySelector('.main-menu').setAttribute('style', 'display:none');
             restart.removeAttribute('style');
+            board.removeAttribute('style');
+            diffs.setAttribute('style', 'display:none')
         });
     });
 
     diffs.setAttribute('style', 'display:none;');
 
-    const playbtn = document.querySelector('.play-btn');
     playbtn.addEventListener('click', event => {
         playbtn.parentNode.setAttribute('style', 'display:none;');
         diffs.removeAttribute('style');
     });
+
+    winrestart.addEventListener('click', e=>{
+        winmenu.setAttribute('style', 'display:none');
+        board.removeAttribute('style');
+        document.querySelector('.main-menu').setAttribute('style', 'display:none');        
+        newGame();
+    });
+
+    tomenu.addEventListener('click', e=>{
+        winmenu.setAttribute('style', 'display:none');
+        board.setAttribute('style', 'display:none');
+        document.querySelector('.main-menu').removeAttribute('style');
+        document.querySelector('.main-buttons').removeAttribute('style'); 
+    });
+
 }
 
 const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
@@ -33,8 +56,10 @@ let lastDiff = 0;
 
 const gameStatus = () => {
     if (document.querySelectorAll('.flip-container').length == 0) {
-        alert("You win!");
-        newGame();
+        document.querySelector('.board').setAttribute('style', 'display:none');
+        document.querySelector('.restart').setAttribute('style', 'display:none');
+        document.querySelector('.win').removeAttribute('style');
+        document.querySelector('.main-menu').removeAttribute('style');
     }
 }
 
