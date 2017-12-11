@@ -1,11 +1,19 @@
 'use strict';
 window.onload = () => {
     const diffs = document.querySelector('.diff-btns');
+    
+    const restart = document.querySelector('.restart');
+    restart.addEventListener('click', e=>{
+        newGame();
+    });
+
+    restart.setAttribute('style', 'display:none');
 
     diffs.querySelectorAll('li').forEach(e => {
         e.addEventListener('click', event => {
             newGame(e.getAttribute('data-diff'));
             document.querySelector('.main-menu').setAttribute('style', 'display:none');
+            restart.removeAttribute('style');
         });
     });
 

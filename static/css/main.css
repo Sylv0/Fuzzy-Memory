@@ -27,6 +27,18 @@ body{
     align-content: center;
 }
 
+.restart{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    border: 1px solid black;
+    border-radius: 100%;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 11;
+}
+
 .main-menu{
     position: relative;
     height: 100%;
