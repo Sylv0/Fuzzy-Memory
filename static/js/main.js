@@ -88,11 +88,6 @@ const createCard = (i) => {
 
 }
 
-const randCards = (cards)=>{
-    this.colors = colors.sort(function(a, b){return 0.5 - Math.random()});;
-    for (let index = 0; index < cards.length; index+=2) {
-        cards[index].querySelector('.back').style.backgroundColor = `var(--${this.colors[Math.floor(index/2)]})`;
-        cards[index+1].querySelector('.back').style.backgroundColor = `var(--${this.colors[Math.floor(index/2)]})`;
     }
 }
 
