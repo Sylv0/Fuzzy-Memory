@@ -33,14 +33,14 @@ const unflipCards = (cards) => {
     });
 }
 
-const shuffle = (cards)=>{
+const shuffle = (cards) => {
     cards.forEach((element, i) => {
         setTimeout(() => {
             element.classList.add("shuffle")
-        }, 100 * (i-1));
+        }, 100 * (i - 1));
         setTimeout(() => {
             element.classList.remove("shuffle")
-        }, (100 * cards.length)+500);
+        }, (100 * cards.length) + 500);
     });
 }
 
