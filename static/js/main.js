@@ -36,7 +36,8 @@ window.onload = () => {
     winrestart.addEventListener('click', e=>{
         winmenu.setAttribute('style', 'display:none');
         board.removeAttribute('style');
-        document.querySelector('.main-menu').setAttribute('style', 'display:none');        
+        document.querySelector('.main-menu').setAttribute('style', 'display:none');
+        restart.removeAttribute('style'); 
         newGame();
     });
 
