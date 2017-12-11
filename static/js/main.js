@@ -61,9 +61,10 @@ function findAncestor(el, cls) {
     return el;
 }
 
-const createCard = () => {
+const createCard = (i) => {
     let card = document.createElement('div');
     card.classList.add('flip-container');
+    card.setAttribute('data-color', colors[Math.floor(i / 2)]);
 
     let flipper = document.createElement('div');
     flipper.classList.add('flipper');
