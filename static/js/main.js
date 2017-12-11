@@ -104,17 +104,21 @@ const createCards = (numCards) => {
     return document.querySelectorAll('.flip-container');
 }
 
-const newGame = (cards) => {
-    this.cards = document.querySelectorAll('.flip-container');
-    unflipCards(this.cards);
+const clearBoard = () => {
+    document.querySelectorAll('.flip-container').forEach(elmnt => { elmnt.remove() });
+}
+
+const newGame = () => {
+    let numCards = document.querySelector('#num-cards').value*2;
+    if(numCards < 16) numCards = 4;
+    if(numCards > 20) numCards = 20;
+    if (document.querySelectorAll('.flip-container').length > 0)
+        clearBoard();
+    let cards = createCards(numCards);
+    unflipCards(cards);
+    shuffle(cards);
     setTimeout(() => {
-        randCards(this.cards);
-    }, 500);
-    // setTimeout(() => {
-    //     shuffle(this.cards);
-    //     setTimeout(() => {
-    //         positionCards(this.cards);
-    //     }, 2000);
-    // }, 1000);
-    positionCards(this.cards);
+        positionCards(cards);
+    }, 100 * cards.length + 500);
+
 }
