@@ -1,13 +1,8 @@
 'use strict';
-
 window.onload = () => {
-
-    for (let ind = 0; ind < document.querySelector('#num-cards').value; ind++) {
-        document.querySelector('.board').appendChild(createCard());
-    }
     document.querySelector('.restart').addEventListener('click', (event) => {
         event.preventDefault();
-        newGame(document.querySelector('#num-cards').value);
+        newGame();
     })
 }
 
