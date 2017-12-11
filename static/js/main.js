@@ -45,7 +45,6 @@ const cardLogic = (card) => {
     if (!lastFlipped) {
         lastFlipped = card;
     } else {
-        //alert(card.querySelector('.back').style.backgroundColor);
         if (card.querySelector('.back').style.backgroundColor == lastFlipped.querySelector('.back').style.backgroundColor) {
             setTimeout(() => {
                 card.remove();
