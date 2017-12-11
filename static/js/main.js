@@ -21,18 +21,24 @@ const gameStatus = () => {
 }
 
 const cardLogic = (card) => {
-    if(!lastFlipped){
+    if (!lastFlipped) {
         lastFlipped = card;
-    }else{
+    } else {
         //alert(card.querySelector('.back').style.backgroundColor);
-        if(card.querySelector('.back').style.backgroundColor == lastFlipped.querySelector('.back').style.backgroundColor){
-            card.remove();
-            lastFlipped.remove();
-        }else{
-            lastFlipped.classList.remove('flip');
-            card.classList.remove('flip');
+        if (card.querySelector('.back').style.backgroundColor == lastFlipped.querySelector('.back').style.backgroundColor) {
+            setTimeout(() => {
+                card.remove();
+                lastFlipped.remove();
+                gameStatus();
+                lastFlipped = false;
+            }, 1000);
+        } else {
+            setTimeout(() => {
+                lastFlipped.classList.remove('flip');
+                card.classList.remove('flip');
+                lastFlipped = false;
+            }, 1000);
         }
-        lastFlipped = false;
     }
 
 }
