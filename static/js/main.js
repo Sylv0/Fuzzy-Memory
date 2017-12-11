@@ -172,6 +172,7 @@ const newGame = (diff=lastDiff) => {
     let numCards = (8 + diff) * 2;
     if (numCards < 16) numCards = 4;
     if (numCards > 20) numCards = 20;
+    if(diff === -1) numCards = 4;
     if (document.querySelectorAll('.flip-container').length > 0)
         clearBoard();
     let cards = createCards(numCards);
