@@ -49,8 +49,6 @@ window.onload = () => {
 
 }
 
-const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
-
 let lastFlipped;
 let lastDiff = 0;
 
@@ -121,7 +119,7 @@ function findAncestor(el, cls) {
     return el;
 }
 
-const createCard = (i) => {
+const createCard = (i ,colors) => {
     let card = document.createElement('div');
     card.classList.add('flip-container');
     card.setAttribute('data-color', colors[Math.floor(i / 2)]);
@@ -157,8 +155,9 @@ const createCard = (i) => {
 
 const createCards = (numCards) => {
     let cards;
+    const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
     for (let index = 0; index < numCards; index++) {
-        document.querySelector('.board').appendChild(createCard(index));
+        document.querySelector('.board').appendChild(createCard(index, colors));
     }
     return document.querySelectorAll('.flip-container');
 }
