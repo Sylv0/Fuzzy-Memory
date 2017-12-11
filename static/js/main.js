@@ -84,8 +84,8 @@ const shuffle = (cards) => {
 const positionCards = (cards, diff) => {
     cards.forEach(card => {
         card.style.zIndex = Math.floor((Math.random() * 10) + 1);
-        card.style.left = Math.floor((Math.random() * (window.innerWidth - 160))) + "px";
-        card.style.top = Math.floor((Math.random() * (window.innerHeight - 290))) + "px";
+        card.style.left = Math.floor((Math.random() * (window.innerWidth - card.clientWidth))) + "px";
+        card.style.top = Math.floor((Math.random() * (window.innerHeight - card.clientHeight))) + "px";
         if (diff < 2) {
             card.classList.add('flip');
             //alert(card.getBoundingClientRect().x);
@@ -160,5 +160,4 @@ const newGame = (diff=lastDiff) => {
     setTimeout(() => {
         positionCards(cards, diff);
     }, 100 * cards.length + 500);
-
 }
