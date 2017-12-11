@@ -10,6 +10,13 @@ const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 
 
 let lastFlipped;
 
+const gameStatus = () => {
+    if(document.querySelectorAll('.flip-container').length == 0){
+        alert("You win!");
+        newGame();
+    }
+}
+
 const cardLogic = (card) => {
     if(!lastFlipped){
         lastFlipped = card;
