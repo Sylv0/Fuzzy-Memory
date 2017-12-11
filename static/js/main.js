@@ -88,7 +88,12 @@ const createCard = (i) => {
 
 }
 
+const createCards = (numCards) => {
+    let cards;
+    for (let index = 0; index < numCards; index++) {
+        document.querySelector('.board').appendChild(createCard(index));
     }
+    return document.querySelectorAll('.flip-container');
 }
 
 const newGame = (cards) => {
