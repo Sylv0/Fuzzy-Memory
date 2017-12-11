@@ -27,6 +27,36 @@ body{
     align-content: center;
 }
 
+.main-menu{
+    position: relative;
+    height: 100%;
+}
+
+.main-menu ul{
+    text-align: center;
+    margin: auto;
+    list-style: none;
+}
+.main-menu ul li{
+    background-color: #BBB;
+    border: 3px solid #AAA;
+    border-radius: 5%;
+    font-size: 36px;
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    padding: 20px;
+}
+
+.main-menu ul li:hover{
+    background-color: #CCC;
+    cursor: pointer;
+}
+
+.main-menu ul li:active{
+    background-color: #DDD;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
     display: inline-block;
@@ -90,4 +120,11 @@ body{
 
 .board{
     position: relative;
+}
+
+@media (max-width: 415px){
+    .flip-container, .front, .back {
+        width: 80px;
+        height: 120px;
+    }
 }
