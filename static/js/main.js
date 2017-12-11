@@ -28,9 +28,6 @@ window.onload = () => {
 
 const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
 
-const cardHeight = 240;
-const cardWidth = 140;
-
 let lastFlipped;
 let lastDiff = 0;
 
