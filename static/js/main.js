@@ -84,7 +84,6 @@ const positionCards = (cards, diff) => {
         card.style.top = Math.floor((Math.random() * (window.innerHeight - card.clientHeight))) + "px";
         if (diff < 2) {
             card.classList.add('flip');
-            //alert(card.getBoundingClientRect().x);
             setTimeout(() => {
                 card.classList.remove('flip');
             }, 1000);
