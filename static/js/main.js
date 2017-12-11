@@ -1,9 +1,21 @@
 'use strict';
 window.onload = () => {
-    document.querySelector('.restart').addEventListener('click', (event) => {
-        event.preventDefault();
-        newGame();
-    })
+    const diffs = document.querySelector('.diff-btns');
+
+    diffs.querySelectorAll('li').forEach(e => {
+        e.addEventListener('click', event => {
+            newGame(e.getAttribute('data-diff'));
+            document.querySelector('.main-menu').setAttribute('style', 'display:none');
+        });
+    });
+
+    diffs.setAttribute('style', 'display:none;');
+
+    const playbtn = document.querySelector('.play-btn');
+    playbtn.addEventListener('click', event => {
+        playbtn.parentNode.setAttribute('style', 'display:none;');
+        diffs.removeAttribute('style');
+    });
 }
 
 const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
@@ -12,9 +24,10 @@ const cardHeight = 240;
 const cardWidth = 140;
 
 let lastFlipped;
+let lastDiff = 0;
 
 const gameStatus = () => {
-    if(document.querySelectorAll('.flip-container').length == 0){
+    if (document.querySelectorAll('.flip-container').length == 0) {
         alert("You win!");
         newGame();
     }
@@ -60,16 +73,18 @@ const shuffle = (cards) => {
     });
 }
 
-const positionCards = (cards) => {
+const positionCards = (cards, diff) => {
     cards.forEach(card => {
         card.style.zIndex = Math.floor((Math.random() * 10) + 1);
         card.style.left = Math.floor((Math.random() * (window.innerWidth - 160))) + "px";
         card.style.top = Math.floor((Math.random() * (window.innerHeight - 290))) + "px";
-        card.classList.add('flip');
-        //alert(card.getBoundingClientRect().x);
-        setTimeout(() => {
-            card.classList.remove('flip');
-        }, 1000);
+        if (diff < 2) {
+            card.classList.add('flip');
+            //alert(card.getBoundingClientRect().x);
+            setTimeout(() => {
+                card.classList.remove('flip');
+            }, 1000);
+        }
     });
 }
 
@@ -98,7 +113,7 @@ const createCard = (i) => {
     card.appendChild(flipper);
     card.addEventListener('click', (event) => {
         let trgt = event.target;
-        if(!trgt.classList.contains('flip-container'))
+        if (!trgt.classList.contains('flip-container'))
             trgt = findAncestor(event.target, 'flip-container');
         if (!trgt.classList.contains('flip')) {
             if (document.querySelectorAll('.flip').length < 2) {
@@ -124,17 +139,18 @@ const clearBoard = () => {
     document.querySelectorAll('.flip-container').forEach(elmnt => { elmnt.remove() });
 }
 
-const newGame = () => {
-    let numCards = document.querySelector('#num-cards').value*2;
-    if(numCards < 16) numCards = 4;
-    if(numCards > 20) numCards = 20;
+const newGame = (diff=lastDiff) => {
+    lastDiff = diff;
+    let numCards = (8 + diff) * 2;
+    if (numCards < 16) numCards = 4;
+    if (numCards > 20) numCards = 20;
     if (document.querySelectorAll('.flip-container').length > 0)
         clearBoard();
     let cards = createCards(numCards);
     unflipCards(cards);
     shuffle(cards);
     setTimeout(() => {
-        positionCards(cards);
+        positionCards(cards, diff);
     }, 100 * cards.length + 500);
 
 }

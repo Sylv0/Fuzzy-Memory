@@ -11,12 +11,16 @@
 </head>
 
 <body>
-    <div class="options">
-        <div class="input-group">
-            <label for="num-cards">Pairs:</label>
-            <input type="number" id="num-cards" min="8" max="10" value="8">
-        </div>
-        <a href="#" class="restart">Restart</a>
+    <div class="main-menu">
+        <ul class="main-buttons">
+            <li class="play-btn">Play</li>
+            <li>Options?</li>
+        </ul>
+        <ul class="diff-btns">
+           <li data-diff=0>Easy</li>
+           <li data-diff=1>Normal</li>
+           <li data-diff=2>Hard</li> 
+        </ul>
     </div>
     <div class="board"></div>
 </body>
