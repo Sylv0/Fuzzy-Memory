@@ -76,12 +76,20 @@ const createCard = (i) => {
 
     let back = document.createElement('div');
     back.classList.add('back');
+    back.style.backgroundColor = `var(--${colors[Math.floor(i / 2)]})`;
     flipper.appendChild(back);
 
     card.appendChild(flipper);
     card.addEventListener('click', (event) => {
-        findAncestor(event.target, "flip-container").classList.toggle('flip');
-        cardLogic(findAncestor(event.target, 'flip-container'));
+        let trgt = event.target;
+        if(!trgt.classList.contains('flip-container'))
+            trgt = findAncestor(event.target, 'flip-container');
+        if (!trgt.classList.contains('flip')) {
+            if (document.querySelectorAll('.flip').length < 2) {
+                trgt.classList.toggle('flip');
+                cardLogic(trgt);
+            }
+        }
     })
 
     return card;
