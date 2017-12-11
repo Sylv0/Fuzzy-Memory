@@ -46,8 +46,14 @@ const shuffle = (cards) => {
 
 const positionCards = (cards) => {
     cards.forEach(card => {
-        card.style.left = Math.floor((Math.random() * (window.innerWidth - 260))+100)+"px";
-        card.style.top = Math.floor((Math.random() * (window.innerHeight - 340)))+"px";
+        card.style.zIndex = Math.floor((Math.random() * 10) + 1);
+        card.style.left = Math.floor((Math.random() * (window.innerWidth - 160))) + "px";
+        card.style.top = Math.floor((Math.random() * (window.innerHeight - 290))) + "px";
+        card.classList.add('flip');
+        //alert(card.getBoundingClientRect().x);
+        setTimeout(() => {
+            card.classList.remove('flip');
+        }, 1000);
     });
 }
 
