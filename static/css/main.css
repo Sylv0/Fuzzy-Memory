@@ -42,6 +42,7 @@ body{
 .main-menu{
     position: relative;
     height: 100%;
+    padding-top: 15%; 
 }
 
 .main-menu ul{
@@ -55,7 +56,7 @@ body{
     border-radius: 5%;
     font-size: 36px;
     margin: auto;
-    margin-top: 50px;
+    margin-bottom: 50px;
     width: 50%;
     padding: 20px;
 }
