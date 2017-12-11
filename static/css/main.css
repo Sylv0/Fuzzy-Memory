@@ -19,14 +19,6 @@ body{
     height: 100vh;
 }
 
-.options{
-    height: 50px;
-    background-color: aqua;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-}
-
 .restart{
     position: absolute;
     top: 10px;
