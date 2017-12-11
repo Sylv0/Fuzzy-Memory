@@ -11,7 +11,7 @@ window.onload = () => {
 
     diffs.querySelectorAll('li').forEach(e => {
         e.addEventListener('click', event => {
-            newGame(e.getAttribute('data-diff'));
+            newGame(parseInt(e.getAttribute('data-diff')));
             document.querySelector('.main-menu').setAttribute('style', 'display:none');
             restart.removeAttribute('style');
         });
