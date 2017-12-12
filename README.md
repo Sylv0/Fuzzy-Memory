@@ -1,1 +1,12 @@
 # Fuzzy-Memory
+A nice little game of memory with some decent UI for a mostly server-side programmer.
+
+## <a href="">Try it here</>
+  or
+## Install it on your machine:
+  1. Clone or download repo and place where you want it.
+  2. Open index.html in your favorite browser or other tool.
+  3. Play the game.
+  
+## Testers
+  Coming Soon
