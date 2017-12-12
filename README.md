@@ -1,7 +1,7 @@
 # Fuzzy-Memory
 A nice little game of memory with some decent UI for a mostly server-side programmer.
 
-## <a href="https://sylv0.github.io/Fuzzy-Memory">Try it here</a>
+## [Try it here](https://sylv0.github.io/Fuzzy-Memory "Fuzzy Memory")
   or
 ## Install it on your machine:
   1. Clone or download repo and place where you want it.
