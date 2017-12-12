@@ -9,5 +9,5 @@ A nice little game of memory with some decent UI for a mostly server-side progra
   3. Play the game.
   
 ## Testers
- Edvin
- Oskar
+ * Edvin
+ * Oskar
