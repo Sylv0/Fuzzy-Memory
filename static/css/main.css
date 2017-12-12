@@ -114,6 +114,10 @@ body{
     border: 3px solid black;
     border-radius: 5%;
     background-color: gray;
+    background-image: url('../images/card-back.svg');
+    background-position: center;
+    background-size: auto 90%;
+    background-repeat: no-repeat;
 }
 
 /* back, initially hidden pane */
