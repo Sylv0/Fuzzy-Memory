@@ -13,7 +13,7 @@ window.onload = () => {
     const tomenu = document.querySelector('.to-menu');
 
     // Run newGame when pressing restart
-    restart.addEventListener('click', e=>{
+    restart.addEventListener('click', e => {
         newGame();
     });
 
@@ -41,20 +41,20 @@ window.onload = () => {
     });
 
     // Show correct elements and start new game when pressing restart after winning
-    winrestart.addEventListener('click', e=>{
+    winrestart.addEventListener('click', e => {
         winmenu.setAttribute('style', 'display:none');
         board.removeAttribute('style');
         document.querySelector('.main-menu').setAttribute('style', 'display:none');
-        restart.removeAttribute('style'); 
+        restart.removeAttribute('style');
         newGame();
     });
 
     // Show correct elements when going to menu after winning
-    tomenu.addEventListener('click', e=>{
+    tomenu.addEventListener('click', e => {
         winmenu.setAttribute('style', 'display:none');
         board.setAttribute('style', 'display:none');
         document.querySelector('.main-menu').removeAttribute('style');
-        document.querySelector('.main-buttons').removeAttribute('style'); 
+        document.querySelector('.main-buttons').removeAttribute('style');
     });
 
 }
@@ -138,7 +138,7 @@ function findAncestor(el, cls) {
 }
 
 // Create a card and give it a color
-const createCard = (i ,colors) => {
+const createCard = (i, colors) => {
     let card = document.createElement('div');
     card.classList.add('flip-container');
     card.setAttribute('data-color', colors[Math.floor(i / 2)]);
@@ -188,12 +188,12 @@ const clearBoard = () => {
 }
 
 // Reset some variables and run all function the start the game
-const newGame = (diff=lastDiff) => {
+const newGame = (diff = lastDiff) => {
     lastDiff = diff;
     let numCards = (8 + diff) * 2;
     if (numCards < 16) numCards = 4;
     if (numCards > 20) numCards = 20;
-    if(diff === -1) numCards = 4;
+    if (diff === -1) numCards = 4;
     if (document.querySelectorAll('.flip-container').length > 0)
         clearBoard();
     let cards = createCards(numCards);
