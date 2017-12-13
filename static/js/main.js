@@ -1,5 +1,9 @@
 'use strict';
+
+// Wait for window to load
 window.onload = () => {
+
+    // Save some elements I'll be using a lot
     const board = document.querySelector('.board');
     const diffs = document.querySelector('.diff-btns');
     const restart = document.querySelector('.restart');
@@ -8,14 +12,18 @@ window.onload = () => {
     const winrestart = document.querySelector('.play-again');
     const tomenu = document.querySelector('.to-menu');
 
+    // Run newGame when pressing restart
     restart.addEventListener('click', e=>{
         newGame();
     });
 
+    // Hide all elements except main menu on start
     board.setAttribute('style', 'display:none');
     restart.setAttribute('style', 'display:none');
     winmenu.setAttribute('style', 'display:none');
+    diffs.setAttribute('style', 'display:none;');
 
+    // Start new game with selected difficulty and hide or show correct elements
     diffs.querySelectorAll('li').forEach(e => {
         e.addEventListener('click', event => {
             newGame(parseInt(e.getAttribute('data-diff')));
@@ -26,13 +34,13 @@ window.onload = () => {
         });
     });
 
-    diffs.setAttribute('style', 'display:none;');
-
+    // Show difficulties when pressing play
     playbtn.addEventListener('click', event => {
         playbtn.parentNode.setAttribute('style', 'display:none;');
         diffs.removeAttribute('style');
     });
 
+    // Show correct elements and start new game when pressing restart after winning
     winrestart.addEventListener('click', e=>{
         winmenu.setAttribute('style', 'display:none');
         board.removeAttribute('style');
@@ -41,6 +49,7 @@ window.onload = () => {
         newGame();
     });
 
+    // Show correct elements when going to menu after winning
     tomenu.addEventListener('click', e=>{
         winmenu.setAttribute('style', 'display:none');
         board.setAttribute('style', 'display:none');
@@ -50,9 +59,11 @@ window.onload = () => {
 
 }
 
+// Save last flipped card and last difficulty to use in logic
 let lastFlipped;
 let lastDiff = 0;
 
+// Check if all cards are gone, and show correct menus if they are
 const gameStatus = () => {
     if (document.querySelectorAll('.flip-container').length == 0) {
         document.querySelector('.board').setAttribute('style', 'display:none');
@@ -62,6 +73,7 @@ const gameStatus = () => {
     }
 }
 
+// Check if cards color match and remove them if they do
 const cardLogic = (card) => {
     if (!lastFlipped) {
         lastFlipped = card;
@@ -84,12 +96,14 @@ const cardLogic = (card) => {
 
 }
 
+// Flip cards back up
 const unflipCards = (cards) => {
     cards.forEach(card => {
         card.classList.remove('flip');
     });
 }
 
+// Only an animation, doesn't affect the order of the cards
 const shuffle = (cards) => {
     cards.forEach((element, i) => {
         setTimeout(() => {
@@ -101,11 +115,13 @@ const shuffle = (cards) => {
     });
 }
 
+// Place cards in random positions based on size of board
 const positionCards = (cards, diff) => {
     cards.forEach(card => {
         card.style.zIndex = Math.floor((Math.random() * 10) + 1);
         card.style.left = Math.floor((Math.random() * (window.innerWidth - card.clientWidth))) + "px";
         card.style.top = Math.floor((Math.random() * (window.innerHeight - card.clientHeight))) + "px";
+        // Flip the cards face up for a second if difficulty is not "HARD"
         if (diff < 2) {
             card.classList.add('flip');
             setTimeout(() => {
@@ -115,11 +131,13 @@ const positionCards = (cards, diff) => {
     });
 }
 
+// Function to find an ancestor of an element, with specified class
 function findAncestor(el, cls) {
     while ((el = el.parentElement) && !el.classList.contains(cls));
     return el;
 }
 
+// Create a card and give it a color
 const createCard = (i ,colors) => {
     let card = document.createElement('div');
     card.classList.add('flip-container');
@@ -154,6 +172,7 @@ const createCard = (i ,colors) => {
 
 }
 
+// Loop through and create specified number of cards
 const createCards = (numCards) => {
     let cards;
     const colors = ['red', 'green', 'blue', 'orange', 'magenta', 'yellow', 'slime', 'greyish', 'darkness', 'lightness'].sort(function (a, b) { return 0.5 - Math.random() });
@@ -163,10 +182,12 @@ const createCards = (numCards) => {
     return document.querySelectorAll('.flip-container');
 }
 
+// Remove any cards on the board
 const clearBoard = () => {
     document.querySelectorAll('.flip-container').forEach(elmnt => { elmnt.remove() });
 }
 
+// Reset some variables and run all function the start the game
 const newGame = (diff=lastDiff) => {
     lastDiff = diff;
     let numCards = (8 + diff) * 2;
