@@ -2,13 +2,13 @@
     --red: #F00;
     --green: #0F0;
     --blue: #00F;
-    --orange: #FA0;
+    --orange: #F80;
     --magenta: #F0F;
     --yellow: #FF0;
     --slime: #0FF;
-    --greyish: #2c2c28;
+    --greyish: #4c4c48;
     --darkness: #111133;
-    --lightness: #FFFFAA;
+    --lightness: #c7c79f;
 }
 
 * {
