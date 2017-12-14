@@ -12,7 +12,7 @@ window.onload = () => {
     const winmenu = document.querySelector('.win');
     const winrestart = document.querySelector('.play-again');
     const tomenu = document.querySelector('.to-menu');
-    
+
     // Hide all elements except main menu on start
     board.setAttribute('style', 'display:none');
     restart.setAttribute('style', 'display:none');
@@ -30,7 +30,7 @@ window.onload = () => {
         board.setAttribute('style', 'display:none');
         restart.setAttribute('style', 'display:none');
         quit.setAttribute('style', 'display:none;');
-        document.querySelector('.main-menu').removeAttribute('style');     
+        document.querySelector('.main-menu').removeAttribute('style');
         document.querySelector('.main-buttons').removeAttribute('style');
     });
 
