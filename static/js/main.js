@@ -7,21 +7,31 @@ window.onload = () => {
     const board = document.querySelector('.board');
     const diffs = document.querySelector('.diff-btns');
     const restart = document.querySelector('.restart');
+    const quit = document.querySelector('.quit');
     const playbtn = document.querySelector('.play-btn');
     const winmenu = document.querySelector('.win');
     const winrestart = document.querySelector('.play-again');
     const tomenu = document.querySelector('.to-menu');
+    
+    // Hide all elements except main menu on start
+    board.setAttribute('style', 'display:none');
+    restart.setAttribute('style', 'display:none');
+    winmenu.setAttribute('style', 'display:none');
+    diffs.setAttribute('style', 'display:none');
+    quit.setAttribute('style', 'display:none');
 
     // Run newGame when pressing restart
     restart.addEventListener('click', e => {
         newGame();
     });
 
-    // Hide all elements except main menu on start
-    board.setAttribute('style', 'display:none');
-    restart.setAttribute('style', 'display:none');
-    winmenu.setAttribute('style', 'display:none');
-    diffs.setAttribute('style', 'display:none;');
+    quit.addEventListener('click', e => {
+        board.setAttribute('style', 'display:none');
+        restart.setAttribute('style', 'display:none');
+        quit.setAttribute('style', 'display:none;');
+        document.querySelector('.main-menu').removeAttribute('style');     
+        document.querySelector('.main-buttons').removeAttribute('style');
+    });
 
     // Start new game with selected difficulty and hide or show correct elements
     diffs.querySelectorAll('li').forEach(e => {
@@ -30,13 +40,14 @@ window.onload = () => {
             document.querySelector('.main-menu').setAttribute('style', 'display:none');
             restart.removeAttribute('style');
             board.removeAttribute('style');
-            diffs.setAttribute('style', 'display:none')
+            diffs.setAttribute('style', 'display:none');
+            quit.removeAttribute('style');
         });
     });
 
     // Show difficulties when pressing play
     playbtn.addEventListener('click', event => {
-        playbtn.parentNode.setAttribute('style', 'display:none;');
+        playbtn.parentNode.setAttribute('style', 'display:none');
         diffs.removeAttribute('style');
     });
 
@@ -46,6 +57,7 @@ window.onload = () => {
         board.removeAttribute('style');
         document.querySelector('.main-menu').setAttribute('style', 'display:none');
         restart.removeAttribute('style');
+        quit.removeAttribute('style');
         newGame();
     });
 
@@ -68,6 +80,7 @@ const gameStatus = () => {
     if (document.querySelectorAll('.flip-container').length == 0) {
         document.querySelector('.board').setAttribute('style', 'display:none');
         document.querySelector('.restart').setAttribute('style', 'display:none');
+        document.querySelector('.quit').setAttribute('style', 'display:none');
         document.querySelector('.win').removeAttribute('style');
         document.querySelector('.main-menu').removeAttribute('style');
     }
