@@ -25,6 +25,7 @@ window.onload = () => {
         newGame();
     });
 
+    // Show main menu qhen pressing quit
     quit.addEventListener('click', e => {
         board.setAttribute('style', 'display:none');
         restart.setAttribute('style', 'display:none');
