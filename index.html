@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <script src="static/js/main.js"></script>
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -33,6 +32,15 @@
     <div class="restart">Restart</div>
     <div class="quit">Quit</div>
     <div class="board"></div>
+
+    <link rel="stylesheet" href="static/css/main.css">
+    <script src="static/js/main.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js');
+        }
+    </script>
 </body>
 
 </html>
