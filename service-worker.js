@@ -5,7 +5,9 @@ const urls = [
     "./static/css/main.css",
     "./static/js/main.js",
     "./static/images/card-back.svg",
-    "./manifest.json"
+    "./manifest.json",
+    "./static/images/icons-192.png",
+    "./static/images/icons-512.png"
 ]
 
 self.addEventListener("install", function(e) {
