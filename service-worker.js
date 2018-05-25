@@ -1,4 +1,4 @@
-const VERSION = "v1-" + Date.now()
+const VERSION = "v1"
 
 const urls = [
     "/",
