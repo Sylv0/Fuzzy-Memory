@@ -1,11 +1,11 @@
 const VERSION = "v1"
 
 const urls = [
-    "/",
-    "/static/css/main.css",
-    "/static/js/main.js",
-    "/static/images/card-back.svg",
-    "/manifest.json"
+    "./",
+    "./static/css/main.css",
+    "./static/js/main.js",
+    "./static/images/card-back.svg",
+    "./manifest.json"
 ]
 
 self.addEventListener("install", function(e) {
