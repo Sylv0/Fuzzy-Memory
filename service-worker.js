@@ -1,5 +1,3 @@
-"use strict"
-
 const VERSION = "v1-" + Date.now()
 
 const urls = [
